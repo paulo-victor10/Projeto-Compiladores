@@ -1,0 +1,74 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Full
+Input = String
+#RegularDefinitions
+LETRA: [a-zA-Z_]
+DIGITO: [0-9]
+ESPECIAL: [^a-zA-Z]
+
+#Tokens
+//palavras reservadas
+
+//*************BEGIN OPERADORES**************** 
+//matemática
+"=" 
+"+" 
+"*" 
+"-" 
+"/"
+//incremento
+"++"
+"+="
+"--"
+"-="
+//delimitadores ou agrupadores
+"("
+")"
+"{"
+"}"
+","
+//lógicos
+">"
+">="
+"<="
+"=="
+"!="
+"!"
+"||"
+"&&"
+"and"
+"or"
+//repetição
+"for"
+"while"
+"do"
+//
+"return"
+//*************END OPERADORES****************
+
+//************begin reserved*****************
+"int"
+"float"
+"char"
+"string"
+"if"
+"else"
+//************end reserved*****************
+
+//************begin tokens*****************
+ID: {LETRA}({LETRA} | {DIGITO})*
+//reconhecendo tipos
+INT: {DIGITO}+
+STRING: \"({LETRA}|{ESPECIAL})*\"
+CHAR: '({LETRA}|{ESPECIAL})'
+
+//************end tokens*******************
+
+//ignore
+: #(.)*
+: [" "\t\n\r]*
