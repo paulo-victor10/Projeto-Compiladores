@@ -21,7 +21,7 @@ O objetivo do projeto é aplicar os conceitos teóricos da construção de compi
 
 O desenvolvimento segue a ementa da disciplina, com as seguintes etapas planejadas:
 
--   [x] **Análise Léxica:** Definição dos tokens da linguagem (palavras-chave, operadores, identificadores, etc.)
+-   [ ] **Análise Léxica:** Definição dos tokens da linguagem (palavras-chave, operadores, identificadores, etc.)
 -   [ ] **Análise Sintática:** Implementação da gramática da linguagem para validação de estruturas
 -   [ ] **Análise Semântica:** Construção da árvore sintática e verificação de tipos e escopo
 -   [ ] **Geração de Código Intermediário**[cite: 293].
