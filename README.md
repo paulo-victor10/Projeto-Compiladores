@@ -15,6 +15,7 @@ O objetivo do projeto é aplicar os conceitos teóricos da construção de compi
 
 * `/documentacao`: Contém os materiais de apoio, como livros, slides da disciplina e tutoriais das ferramentas.
 * `/gals`: Contém o arquivo `.gals` com a especificação léxica e, futuramente, a especificação sintática do projeto.
+* `/lexico`: Contém o analisar léxico, código teste de entrada, makefile e o executável da linguagem
 * `README.md`: Este arquivo com a descrição do projeto.
 
 ## 🚀 Andamento do Projeto
