@@ -1,56 +1,58 @@
 # Exemplo de código na linguagem KamenRider
-# Este é um comentário
+# Este é um comentário em linha
 
->!testando
-quebra de linha
-comentario em bloco
+>!
+Este é um comentário
+em bloco de múltiplas linhas
 !<
 
-int main() {
-    # Declaração de variáveis
-    int idade = 25;
-    float salario = 3500.50;
-    string nome = "Kamen Rider";
-    char letra = 'A';
-    bool ativo = true;
-    
-    # Operação de leitura
-    leia("Digite sua idade: ");
-    scanf("%d", &idade);
-    
-    # Operações condicionais
-    if (idade >= 18) {
-        escreva("Maior de idade");
-        salario += 1000.00;
-    } else {
-        printf("Menor de idade");
-    }
-    
-    # Operações de repetição
-    int contador = 0;
-    while (contador < 10) {
-        contador++;
-        escreva("Contador: ");
-        printf("%d", contador);
-    }
-    
-    # Laço for
-    for (int i = 0; i < 5; i++) {
-        resultado = resultado * 2;
-    }
-    
-    # Operadores lógicos
-    if ((idade > 21) && (salario >= 3000)) {
-        aprovado = true;
-    }
-    
-    if (nome == "Admin" || idade >= 65) {
-        desconto = 0.20;
-    }
-    
-    # Operadores aritméticos
-    total = (salario + bonus) * (1 - desconto);
-    valor_final = total / 12;
-    
-    return 0;
+StandingBy
+
+int idade = 25;
+float salario = 3500.50;
+string nome = "Kamen Rider";
+char letra = 'A';
+bool ativo = true;
+
+# Operação de leitura
+henshin("Digite sua idade: ");
+
+# Operação de escrita
+riderkick("open your eyes for the next faiz");
+
+# Estrutura condicional
+if (idade >= 18) {
+    riderkick("Maior de idade");
+    salario += 1000.00;
+} else {
+    riderkick("Menor de idade");
 }
+
+# Estrutura de repetição while
+int contador = 0;
+while (contador < 5) {
+    contador++;
+    riderkick("Contador: ");
+}
+
+# Estrutura de repetição for
+for (int i = 0; i < 3; i++) {
+    salario = salario * 1.1;
+}
+
+# Operadores lógicos
+if ((idade > 21) && (salario >= 3000)) {
+    ativo = true;
+}
+
+if (nome == "Admin" || idade >= 65) {
+    desconto = 0.20;
+}
+
+# Operadores aritméticos
+total = (salario + bonus) * (1 - desconto);
+valor_final = total / 12;
+
+return 0;
+
+Complete

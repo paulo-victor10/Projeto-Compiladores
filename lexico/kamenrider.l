@@ -23,6 +23,11 @@ ESPECIAL    [^a-zA-Z]
 <COMMENT>"\n"   { linha++; } 
 <COMMENT>.      { /*Igorando comentario com quebra de linha (bloco)*/}
 
+"StandingBy"        { printf("BEGIN_PROGRAM:\t\t%s\n", yytext); }
+"Complete"           { printf("END_PROGRAM:\t\t%s\n", yytext); }
+"henshin"            { printf("READ_INPUT:\t\t%s\n", yytext); }
+"riderkick"         { printf("PRINT_OUTPUT:\t\t%s\n", yytext); }      
+
 "++"        { printf("OP_INCREMENTO:\t\t%s\n", yytext); }
 "+="        { printf("OP_ATRIBUICAO_COMPOSTA:\t%s\n", yytext); }
 "--"        { printf("OP_DECREMENTO:\t\t%s\n", yytext); }
