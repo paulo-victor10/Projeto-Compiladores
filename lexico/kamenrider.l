@@ -4,6 +4,24 @@
     #include <string.h>
 
     int linha = 1;
+
+    char* remover_aspas(char* s){
+        
+        int tam=strlen(s);
+
+        if(tam<2){
+            char *scopy =  malloc(1);
+            if (scopy) scopy[0]='\0';
+            return scopy;
+        }
+
+        char *scopy = malloc(tam-1);
+
+        strncpy(scopy, s+1, tam-2);
+        scopy[tam-2] = '\0';
+
+        return scopy;
+    }
 %}
 
 /* Estados */
@@ -65,8 +83,14 @@ ESPECIAL    [^a-zA-Z]
 {DIGITO}+                   { printf("INTEIRO:\t\t%s\n", yytext); }
 
 
-\"([^"\n])*\"   { printf("STRING:\t\t\t%s\n", yytext); }
-'([^'\n])'      { printf("CHAR:\t\t\t%s\n", yytext); }
+\"([^"\n])*\"   {
+    yytext=remover_aspas(yytext);
+    
+    printf("STRING:\t\t\t%s\n", yytext); }
+'([^'\n])'      { 
+    yytext=remover_aspas(yytext);
+    
+    printf("CHAR:\t\t\t%s\n", yytext); }
 
 
 "="         { printf("OP_ATRIBUICAO:\t\t%s\n", yytext); }

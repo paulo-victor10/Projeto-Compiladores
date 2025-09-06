@@ -538,11 +538,29 @@ char *yytext;
     #include <string.h>
 
     int linha = 1;
-#line 542 "lex.yy.c"
+
+    char* remover_aspas(char* s){
+        
+        int tam=strlen(s);
+
+        if(tam<2){
+            char *scopy =  malloc(1);
+            if (scopy) scopy[0]='\0';
+            return scopy;
+        }
+
+        char *scopy = malloc(tam-1);
+
+        strncpy(scopy, s+1, tam-2);
+        scopy[tam-2] = '\0';
+
+        return scopy;
+    }
+#line 560 "lex.yy.c"
 /* Estados */
  
 /* Definições Regulares */
-#line 546 "lex.yy.c"
+#line 564 "lex.yy.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -760,10 +778,10 @@ YY_DECL
 		}
 
 	{
-#line 17 "kamenrider.l"
+#line 35 "kamenrider.l"
 
 
-#line 767 "lex.yy.c"
+#line 785 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -822,307 +840,313 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 19 "kamenrider.l"
+#line 37 "kamenrider.l"
 { /*comentario Ignorado em linha */ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 21 "kamenrider.l"
+#line 39 "kamenrider.l"
 { BEGIN(COMMENT); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "kamenrider.l"
+#line 40 "kamenrider.l"
 { BEGIN(INITIAL); }
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 23 "kamenrider.l"
+#line 41 "kamenrider.l"
 { linha++; } 
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 "kamenrider.l"
+#line 42 "kamenrider.l"
 { /*Igorando comentario com quebra de linha (bloco)*/}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "kamenrider.l"
+#line 44 "kamenrider.l"
 { printf("BEGIN_PROGRAM:\t\t%s\n", yytext); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 27 "kamenrider.l"
+#line 45 "kamenrider.l"
 { printf("END_PROGRAM:\t\t%s\n", yytext); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 28 "kamenrider.l"
+#line 46 "kamenrider.l"
 { printf("READ_INPUT:\t\t%s\n", yytext); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 29 "kamenrider.l"
+#line 47 "kamenrider.l"
 { printf("PRINT_OUTPUT:\t\t%s\n", yytext); }      
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 31 "kamenrider.l"
+#line 49 "kamenrider.l"
 { printf("OP_INCREMENTO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 32 "kamenrider.l"
+#line 50 "kamenrider.l"
 { printf("OP_ATRIBUICAO_COMPOSTA:\t%s\n", yytext); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 33 "kamenrider.l"
+#line 51 "kamenrider.l"
 { printf("OP_DECREMENTO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 34 "kamenrider.l"
+#line 52 "kamenrider.l"
 { printf("OP_ATRIBUICAO_COMPOSTA:\t%s\n", yytext); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 35 "kamenrider.l"
+#line 53 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 36 "kamenrider.l"
+#line 54 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 37 "kamenrider.l"
+#line 55 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 38 "kamenrider.l"
+#line 56 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 39 "kamenrider.l"
+#line 57 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 40 "kamenrider.l"
+#line 58 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 42 "kamenrider.l"
+#line 60 "kamenrider.l"
 { printf("OP_MEMORIA: \t\t%s\n", yytext); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 44 "kamenrider.l"
+#line 62 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 45 "kamenrider.l"
+#line 63 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 46 "kamenrider.l"
+#line 64 "kamenrider.l"
 { printf("REPETICAO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 47 "kamenrider.l"
+#line 65 "kamenrider.l"
 { printf("REPETICAO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 48 "kamenrider.l"
+#line 66 "kamenrider.l"
 { printf("REPETICAO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 49 "kamenrider.l"
+#line 67 "kamenrider.l"
 { printf("RETURN:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 50 "kamenrider.l"
+#line 68 "kamenrider.l"
 { printf("TIPO:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 51 "kamenrider.l"
+#line 69 "kamenrider.l"
 { printf("TIPO:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 52 "kamenrider.l"
+#line 70 "kamenrider.l"
 { printf("TIPO:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 53 "kamenrider.l"
+#line 71 "kamenrider.l"
 { printf("TIPO:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 54 "kamenrider.l"
+#line 72 "kamenrider.l"
 { printf("TIPO:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 55 "kamenrider.l"
+#line 73 "kamenrider.l"
 { printf("BOOLEANO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 56 "kamenrider.l"
+#line 74 "kamenrider.l"
 { printf("BOOLEANO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 57 "kamenrider.l"
+#line 75 "kamenrider.l"
 { printf("CONDICIONAL:\t\t%s\n", yytext); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 58 "kamenrider.l"
+#line 76 "kamenrider.l"
 { printf("CONDICIONAL:\t\t%s\n", yytext); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 61 "kamenrider.l"
+#line 79 "kamenrider.l"
 { printf("ID:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 64 "kamenrider.l"
+#line 82 "kamenrider.l"
 { printf("FLOAT:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 65 "kamenrider.l"
+#line 83 "kamenrider.l"
 { printf("INTEIRO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 68 "kamenrider.l"
-{ printf("STRING:\t\t\t%s\n", yytext); }
+#line 86 "kamenrider.l"
+{
+    yytext=remover_aspas(yytext);
+    
+    printf("STRING:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 69 "kamenrider.l"
-{ printf("CHAR:\t\t\t%s\n", yytext); }
+#line 90 "kamenrider.l"
+{ 
+    yytext=remover_aspas(yytext);
+    
+    printf("CHAR:\t\t\t%s\n", yytext); }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 72 "kamenrider.l"
+#line 96 "kamenrider.l"
 { printf("OP_ATRIBUICAO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 73 "kamenrider.l"
+#line 97 "kamenrider.l"
 { printf("OP_ARITMETICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 74 "kamenrider.l"
+#line 98 "kamenrider.l"
 { printf("OP_ARITMETICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 75 "kamenrider.l"
+#line 99 "kamenrider.l"
 { printf("OP_ARITMETICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 76 "kamenrider.l"
+#line 100 "kamenrider.l"
 { printf("OP_ARITMETICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 77 "kamenrider.l"
+#line 101 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 78 "kamenrider.l"
+#line 102 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 79 "kamenrider.l"
+#line 103 "kamenrider.l"
 { printf("OP_LOGICO:\t\t%s\n", yytext); }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 80 "kamenrider.l"
+#line 104 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 81 "kamenrider.l"
+#line 105 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 82 "kamenrider.l"
+#line 106 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 83 "kamenrider.l"
+#line 107 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 84 "kamenrider.l"
+#line 108 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 85 "kamenrider.l"
+#line 109 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 86 "kamenrider.l"
+#line 110 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 87 "kamenrider.l"
+#line 111 "kamenrider.l"
 { printf("DELIMITADOR:\t\t%s\n", yytext); }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 90 "kamenrider.l"
+#line 114 "kamenrider.l"
 { }
 	YY_BREAK
 case 58:
 /* rule 58 can match eol */
 YY_RULE_SETUP
-#line 91 "kamenrider.l"
+#line 115 "kamenrider.l"
 { linha++; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 94 "kamenrider.l"
+#line 118 "kamenrider.l"
 { printf("ERRO: Caractere nao reconhecido '%s' na linha %d\n", yytext, linha); }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 96 "kamenrider.l"
+#line 120 "kamenrider.l"
 ECHO;
 	YY_BREAK
-#line 1126 "lex.yy.c"
+#line 1150 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -2128,7 +2152,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 96 "kamenrider.l"
+#line 120 "kamenrider.l"
 
 
 
