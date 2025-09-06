@@ -84,13 +84,13 @@ ESPECIAL    [^a-zA-Z]
 
 
 \"([^"\n])*\"   {
-    yytext=remover_aspas(yytext);
-    
-    printf("STRING:\t\t\t%s\n", yytext); }
+    char* aux=remover_aspas(yytext);
+    printf("STRING:\t\t\t%s\n", aux); 
+    free(aux);}
 '([^'\n])'      { 
-    yytext=remover_aspas(yytext);
-    
-    printf("CHAR:\t\t\t%s\n", yytext); }
+    char* aux=remover_aspas(yytext);
+    printf("CHAR:\t\t\t%s\n", aux); 
+    free(aux);}
 
 
 "="         { printf("OP_ATRIBUICAO:\t\t%s\n", yytext); }

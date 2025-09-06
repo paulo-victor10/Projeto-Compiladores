@@ -1033,17 +1033,17 @@ case 39:
 YY_RULE_SETUP
 #line 86 "kamenrider.l"
 {
-    yytext=remover_aspas(yytext);
-    
-    printf("STRING:\t\t\t%s\n", yytext); }
+    char* aux=remover_aspas(yytext);
+    printf("STRING:\t\t\t%s\n", aux); 
+    free(aux);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 90 "kamenrider.l"
 { 
-    yytext=remover_aspas(yytext);
-    
-    printf("CHAR:\t\t\t%s\n", yytext); }
+    char* aux=remover_aspas(yytext);
+    printf("CHAR:\t\t\t%s\n", aux); 
+    free(aux);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
