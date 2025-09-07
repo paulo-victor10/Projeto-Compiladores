@@ -13,6 +13,7 @@ float salario = 3500.50;
 string nome = "Kamen Rider";
 char letra = 'A';
 bool ativo = true;
+int vetor[4]={2000, 2001, 2022, 700};
 
 # Operação de leitura
 henshin("Digite sua idade: ");

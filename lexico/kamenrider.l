@@ -103,6 +103,8 @@ ESPECIAL    [^a-zA-Z]
 "!"         { printf("OP_LOGICO:\t\t%s\n", yytext); }
 "("         { printf("DELIMITADOR:\t\t%s\n", yytext); }
 ")"         { printf("DELIMITADOR:\t\t%s\n", yytext); }
+"["         { printf("DELIMITADOR:\t\t%s\n", yytext); }
+"]"         { printf("DELIMITADOR:\t\t%s\n", yytext); }
 "{"         { printf("DELIMITADOR:\t\t%s\n", yytext); }
 "}"         { printf("DELIMITADOR:\t\t%s\n", yytext); }
 ","         { printf("DELIMITADOR:\t\t%s\n", yytext); }
