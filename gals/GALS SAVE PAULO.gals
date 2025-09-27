@@ -1,11 +1,14 @@
 #Options
 GenerateScanner = true
-GenerateParser = false
+GenerateParser = true
 Language = Java
 ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
 ScannerCaseSensitive = true
 ScannerTable = Full
-Input = String
+Input = Stream
+Parser = SLR
 #RegularDefinitions
 LETRA: [a-zA-Z_]
 DIGITO: [0-9]
@@ -13,9 +16,13 @@ ESPECIAL: [^a-zA-Z]
 
 #Tokens
 //palavras reservadas
+BEGIN_PROGRAM: "StandingBy"
+END_PROGRAM: "Complete"
+READ_INPUT: "henshin"
+PRINT_OUTPUT: "riderkick"
 
 //*************BEGIN OPERADORES**************** 
-//matemática
+//matematica
 "=" 
 "+" 
 "*" 
@@ -32,7 +39,8 @@ ESPECIAL: [^a-zA-Z]
 "{"
 "}"
 ","
-//lógicos
+";"
+//logicos
 ">"
 ">="
 "<="
@@ -43,7 +51,7 @@ ESPECIAL: [^a-zA-Z]
 "&&"
 "and"
 "or"
-//repetição
+//repeticao
 "for"
 "while"
 "do"
@@ -70,5 +78,45 @@ CHAR: '({LETRA}|{ESPECIAL})'
 //************end tokens*******************
 
 //ignore
-: #(.)*
-: [" "\t\n\r]*
+: "#".*
+: ">!"(.|\n)*"!<"
+: [" "\t\r\n]+
+#NonTerminals
+<PROGRAMA>
+<LISTA_COMANDOS>
+<COMANDO>
+
+<ATRIB>
+<EXP>
+<OP>
+<TIPO>
+<DECL>
+
+<READ>
+<WRITE>
+<WRITE_CONTENT>
+#Grammar
+//inicio e fim do programa
+<PROGRAMA> ::= BEGIN_PROGRAM <LISTA_COMANDOS> END_PROGRAM;
+//lista de comandos
+<LISTA_COMANDOS> ::= <COMANDO> | <LISTA_COMANDOS> <COMANDO>;
+<COMANDO> ::= <ATRIB> | <READ> | <WRITE> ;
+
+//Regra pra declaração de variavel, atribuicao e operações com variáveis.
+<ATRIB> ::= <TIPO> <DECL> ";";
+<DECL> ::= ID "=" <EXP> | ID | ID"," <DECL> | ID "=" <EXP>"," <DECL>;
+
+<EXP> ::= <EXP> <OP> <EXP>
+	| "(" <EXP> ")"
+	| ID | INT;
+<OP> ::= "+"  | "*"  | "-"  | "/";
+<TIPO> ::= "int"  | "float"  | "char"  | "string";
+
+
+//Leitura de dados
+<READ> ::= READ_INPUT "(" ID ")" ";";
+
+//escrita de dados
+<WRITE> ::= PRINT_OUTPUT "(" <WRITE_CONTENT> ")" ";" ;
+<WRITE_CONTENT> ::= STRING | CHAR | ID | <EXP>;
+
