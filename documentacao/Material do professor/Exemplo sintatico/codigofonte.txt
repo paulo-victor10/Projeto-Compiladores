@@ -1,0 +1,15 @@
+
+BEGIN
+
+exibir ("Nota 1: ")
+ler(a)
+exibir ("Nota 2: ")
+ler(b)
+
+c = (a + b)/2.
+
+
+exibir("Sua média é: ",c)
+
+
+END

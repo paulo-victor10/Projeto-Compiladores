@@ -1,0 +1,40 @@
+>!
+  Testando todos os requisitos:
+    (a) Variáveis reais.
+    (b) Atribuição.
+    (c) Operações matemáticas.
+    (d) Leitura e escrita de dados.
+    (e) Escrita de texto e f-strings.
+    (f) Comentários de bloco e linha.
+!<
+
+StandingBy #begin programa
+    real a, b, c, d, e; 
+
+    riderkickln("TESTE DE TODOS OS REQUISITOS"); #print com quebra de linha
+
+    riderkick("Digite o valor de a: "); #print sem quebra de linha
+    henshin(a);
+
+    riderkick("Digite o valor de b: ");
+    henshin(b);
+
+    c = 2 + 3;
+
+    real d = 4.50;
+    
+    a = b * 2.50 + c * 3.70;
+    
+    e = krx(c, 2) / krb(d); #krx é pow e krb é sqr
+
+    riderkick("Resultado final");
+    riderkickln(" das variáveis: ");
+    riderkickln(f"a = {a}");
+    riderkickln(f"b = {b}");
+    riderkickln(f"c = {c}");
+    riderkickln(f"d = {d}");
+    riderkickln(f"e = {e}");
+    
+#end programa  
+  
+Complete 
