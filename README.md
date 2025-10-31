@@ -12,7 +12,7 @@ O objetivo do projeto é aplicar os conceitos teóricos da construção de compi
 
 * `/documentacao`: Contém os materiais de apoio, como livros, slides da disciplina e tutoriais das ferramentas.
 * `/gals`: Contém o arquivo `.gals` com a especificação léxica e, futuramente, a especificação sintática do projeto.
-* `/lexico`: Contém o código-fonte do analisador léxico (`.l`), um código de teste de entrada, o `makefile` e o executável da linguagem "KamenRider".
+* `/analisador`: Contém o código-fonte do analisador léxico (`.l`), analisador sintático (`.y`), um código de teste de entrada, o `makefile` e o executável da linguagem "KamenRider".
 * `README.md`: Este arquivo com a descrição do projeto.
 
 ## 🚀 Andamento do Projeto
@@ -20,18 +20,19 @@ O objetivo do projeto é aplicar os conceitos teóricos da construção de compi
 O desenvolvimento segue a ementa da disciplina, com as seguintes etapas planejadas:
 
 -   [x] **Análise Léxica:** Definição dos tokens da linguagem (palavras-chave, operadores, identificadores, etc.).
--   [ ] **Análise Sintática:** Implementação da gramática da linguagem para validação de estruturas.
+-   [x] **Análise Sintática:** Implementação da gramática da linguagem para validação de estruturas.
 -   [ ] **Análise Semântica:** Construção da árvore sintática e verificação de tipos e escopo.
 -   [ ] **Geração de Código Intermediário.**
 -   [ ] **Desenvolvimento do Mini-Compilador (Projeto Final).**
 
 ## 🔧 Como Compilar e Executar o Analisador Léxico
 
-Para compilar e executar o analisador léxico, navegue até o diretório `/lexico` e utilize os seguintes comandos `make`:
+Para compilar e executar o analisador léxico, navegue até o diretório `/analisador` e utilize os seguintes comandos `make`:
 
 * **Compilar o projeto:**
     ```bash
-    make all
+    make clean
+    make
     ```
 
 * **Executar o analisador com um arquivo de teste:**
@@ -51,3 +52,4 @@ Para compilar e executar o analisador léxico, navegue até o diretório `/lexic
     ```bash
     make clean
     ```
+
