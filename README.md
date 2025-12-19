@@ -21,9 +21,9 @@ O desenvolvimento segue a ementa da disciplina, com as seguintes etapas planejad
 
 -   [x] **Análise Léxica:** Definição dos tokens da linguagem (palavras-chave, operadores, identificadores, etc.).
 -   [x] **Análise Sintática:** Implementação da gramática da linguagem para validação de estruturas.
--   [ ] **Análise Semântica:** Construção da árvore sintática e verificação de tipos e escopo.
--   [ ] **Geração de Código Intermediário.**
--   [ ] **Desenvolvimento do Mini-Compilador (Projeto Final).**
+-   [x] **Análise Semântica:** Construção da árvore sintática e verificação de tipos e escopo.
+-   [x] **Geração de Código Intermediário.**
+-   [x] **Desenvolvimento do Mini-Compilador (Projeto Final).**
 
 ## 🔧 Como Compilar e Executar o Analisador Léxico
 
@@ -38,12 +38,6 @@ Para compilar e executar o analisador léxico, navegue até o diretório `/anali
 * **Executar o analisador com um arquivo de teste:**
     O comando abaixo executará o analisador utilizando o arquivo `codigo.krd` como entrada.
     ```bash
-    make test
-    ```
-
-* **Executar em modo interativo:**
-    Você pode inserir o código diretamente no terminal para ser analisado.
-    ```bash
     make run
     ```
 
@@ -52,4 +46,5 @@ Para compilar e executar o analisador léxico, navegue até o diretório `/anali
     ```bash
     make clean
     ```
+
 
