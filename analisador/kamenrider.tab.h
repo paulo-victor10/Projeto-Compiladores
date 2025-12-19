@@ -54,18 +54,25 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    BEGIN_PROGRAM = 258,           /* BEGIN_PROGRAM  */
-    END_PROGRAM = 259,             /* END_PROGRAM  */
-    READ_INPUT = 260,              /* READ_INPUT  */
-    PRINT_OUTPUT = 261,            /* PRINT_OUTPUT  */
-    PRINTLN_OUTPUT = 262,          /* PRINTLN_OUTPUT  */
-    REAL_TYPE = 263,               /* REAL_TYPE  */
-    ID = 264,                      /* ID  */
-    NUMBER = 265,                  /* NUMBER  */
-    STRING = 266,                  /* STRING  */
-    CHAR = 267,                    /* CHAR  */
-    SQRT_FUNC = 268,               /* SQRT_FUNC  */
-    POW_FUNC = 269                 /* POW_FUNC  */
+    NUMBER_REAL = 258,             /* NUMBER_REAL  */
+    NUMBER_INT = 259,              /* NUMBER_INT  */
+    STRING_LITERAL = 260,          /* STRING_LITERAL  */
+    IDENTIFIER = 261,              /* IDENTIFIER  */
+    BEGIN_PROGRAM = 262,           /* BEGIN_PROGRAM  */
+    END_PROGRAM = 263,             /* END_PROGRAM  */
+    READ_INPUT = 264,              /* READ_INPUT  */
+    PRINT_OUTPUT = 265,            /* PRINT_OUTPUT  */
+    PRINTLN_OUTPUT = 266,          /* PRINTLN_OUTPUT  */
+    TYPE_REAL = 267,               /* TYPE_REAL  */
+    TYPE_INT = 268,                /* TYPE_INT  */
+    TYPE_STRING = 269,             /* TYPE_STRING  */
+    IF = 270,                      /* IF  */
+    ELSE = 271,                    /* ELSE  */
+    WHILE = 272,                   /* WHILE  */
+    SQRT_FUNC = 273,               /* SQRT_FUNC  */
+    POW_FUNC = 274,                /* POW_FUNC  */
+    CMP = 275,                     /* CMP  */
+    UMINUS = 276                   /* UMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -74,13 +81,14 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 55 "kamenrider.y"
+#line 140 "kamenrider.y"
 
     double real;
-    int integer;
+    int inteiro;
     char string[256];
+    struct ast *a;
 
-#line 84 "kamenrider.tab.h"
+#line 92 "kamenrider.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

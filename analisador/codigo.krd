@@ -1,40 +1,173 @@
->!
-  Testando todos os requisitos:
-    (a) Variáveis reais.
-    (b) Atribuição.
-    (c) Operações matemáticas.
-    (d) Leitura e escrita de dados.
-    (e) Escrita de texto e f-strings.
-    (f) Comentários de bloco e linha.
+>! 
+   =========================================
+   TESTE DE SISTEMA - KAMEN RIDER LANGUAGE
+   =========================================
+   Requisitos testados:
+   1. Tipos (int, real, string)
+   2. Vetores/Arrays
+   3. Condicionais (FormChange/BaseForm)
+   4. Loops (ClockUp)
+   5. Matematica (krx, krb) e Logica
+   6. Input/Output com interpolacao
 !<
 
-StandingBy #begin programa
-    real a, b, c, d, e; 
+StandingBy
 
-    riderkickln("TESTE DE TODOS OS REQUISITOS"); #print com quebra de linha
-
-    riderkick("Digite o valor de a: "); #print sem quebra de linha
-    henshin(a);
-
-    riderkick("Digite o valor de b: ");
-    henshin(b);
-
-    c = 2 + 3;
-
-    real d = 4.50;
+    # --- 1. Declaracao de Variaveis ---
+    int i;
+    real a;
+    real b;
+    real c;
+    real delta;
+    string nome;
     
-    a = b * 2.50 + c * 3.70;
-    
-    e = krx(c, 2) / krb(d); #krx é pow e krb é sqr
+    # --- 2. Teste de Arrays (Vetores) ---
+    real notas[3]; 
 
-    riderkick("Resultado final");
-    riderkickln(" das variáveis: ");
-    riderkickln(f"a = {a}");
-    riderkickln(f"b = {b}");
-    riderkickln(f"c = {c}");
-    riderkickln(f"d = {d}");
-    riderkickln(f"e = {e}");
+    riderkickln(">>> INICIANDO PROGRAMA <<<");
+    riderkickln("");
+
+    # --- 3. Teste de Input e String ---
+    riderkick("Digite o nome do Usuario: ");
+    henshin(nome);
+    riderkickln("Ola, {nome}! Prepare-se para o programa.");
+    riderkickln("");
+
+    # --- 4. Teste de Operacoes Matematicas ---
+    riderkickln("--- Calculo de Bhaskara (x^2 - 5x + 6 = 0) ---");
+    a = 1.0;
+    b = 0.0 - 5.0; 
+    c = 6.0;
+
+    # Testando krx (pow) e krb (sqrt)
+    delta = krx(b, 2) - 4 * a * c;
+
+    riderkickln("Delta calculado: {delta}");
+
+    # --- 5. Teste de Condicional (FormChange/BaseForm) ---
+    FormChange (delta < 0) {
+        riderkickln("Erro: Delta negativo. Nenhuma raiz real.");
+    } 
+    BaseForm {
+        real x1;
+        real x2;
+        x1 = (0.0 - b + krb(delta)) / (2 * a);
+        x2 = (0.0 - b - krb(delta)) / (2 * a);
+        
+        riderkickln("Raizes encontradas: x1={x1} e x2={x2}");
+    }
+
+    riderkickln("");
+    riderkickln("--- Teste de Vetores e Loop (ClockUp) ---");
+
+    # --- 6. Teste de Loop e Arrays ---
+    # Preenchendo o vetor
+    i = 0;
+    ClockUp (i < 3) {
+        riderkick("Digite a nota da prova ");
+        riderkick(i);
+        riderkick(": ");
+        
+        # Leitura direta para dentro do vetor
+        henshin(notas[i]);
+        
+        i = i + 1;
+    }
+
+    riderkickln("Calculando media...");
     
-#end programa  
-  
-Complete 
+    real soma;
+    soma = 0.0;
+    i = 0;
+    
+    ClockUp (i < 3) {
+        soma = soma + notas[i];
+        i = i + 1;
+    }
+
+    real media;
+    media = soma / 3.0;
+
+    riderkickln("Media de notas: {media}");
+
+    # Teste Logico Final
+    FormChange (media >= 7.0) {
+        riderkickln("Status: APROVADO! Parabens!");
+    }
+    BaseForm {
+        riderkickln("Status: REPROVADO. Estude mais.");
+    }
+
+    # ==========================================================
+    # --- 7. EXTRA: RESOLUCAO DE PROBLEMA DE GRAFOS ---
+    # ==========================================================
+    
+    riderkickln("");
+    riderkickln("=== MODULO DE REDE (GRAFOS) ===");
+    riderkickln("Verificando conexoes entre 3 Bases (0, 1, 2)");
+    riderkickln("Usando Matriz de Adjacencia Linearizada [3x3]");
+    riderkickln("");
+    riderkickln("Enunciado: ");
+    riderkickln("Existem 3 Bases Rider (Base 0, Base 1, Base 2).");
+    riderkickln("A comunicação entre elas é definida por uma Matriz de Adjacência.");
+    riderkickln("O sistema deve carregar essa rede e calcular automaticamente quantas conexões ativas a Base 1 possui.");
+    riderkickln("IMPORTANTE: Verifique o codigo.krd para entender a lógica por trás do algoritmo");
+    
+
+    # Declaramos um vetor de 9 posicoes para simular matriz 3x3
+    # Mapeamento: indice = (linha * 3) + coluna
+    int grafo[9]; 
+    int k;
+    
+    # Inicializando grafo com 0 (sem conexoes)
+    k = 0;
+    ClockUp(k < 9) {
+        grafo[k] = 0;
+        k = k + 1;
+    }
+
+    # Definindo conexoes (1 = conectado)
+    # Grafo: 0--1 e 1--2 (1 eh o centro)
+    
+    # Conexao 0 -> 1 (Linha 0, Col 1 -> Indice 1)
+    grafo[1] = 1; 
+
+    # Conexao 1 -> 0 (Linha 1, Col 0 -> Indice 3)
+    grafo[3] = 1;
+
+    # Conexao 1 -> 2 (Linha 1, Col 2 -> Indice 5)
+    grafo[5] = 1;
+
+    # Conexao 2 -> 1 (Linha 2, Col 1 -> Indice 7)
+    grafo[7] = 1;
+
+    # PROBLEMA: Contar o grau (conexoes) da Base 1
+    int baseAlvo;
+    baseAlvo = 1;
+    
+    int conexoes;
+    conexoes = 0;
+    
+    int col;
+    col = 0;
+    int index;
+
+    riderkickln("Analisando Base 1...");
+
+    # Percorre as colunas da linha da BaseAlvo
+    ClockUp (col < 3) {
+        # linearizacao de matriz
+        index = (baseAlvo * 3) + col;
+
+        FormChange (grafo[index] == 1) {
+            conexoes = conexoes + 1;
+            riderkick("Conexao encontrada com a Base: ");
+            riderkickln(col);
+        }
+        col = col + 1;
+    }
+
+    riderkickln("Total de conexoes ativas da Base 1: {conexoes}");
+    riderkickln("SISTEMA ENCERRADO.");
+
+Complete

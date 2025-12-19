@@ -1,32 +1,28 @@
 CC = gcc
 FLEX = flex
 BISON = bison
-CFLAGS = -Wall -g
-LDFLAGS = -lfl -lm
+CFLAGS = -Wall -lm
 
-LEX_SRC = kamenrider.l
-Y_SRC = kamenrider.y
 EXEC = kamenrider
 TEST = codigo.krd
 
 all: $(EXEC)
 
-kamenrider.tab.c kamenrider.tab.h: $(Y_SRC)
-	$(BISON) -d $(Y_SRC)
-
-lex.yy.c: $(LEX_SRC) kamenrider.tab.h
-	$(FLEX) $(LEX_SRC)
-
+# AQUI ESTAVA O ERRO: Adicionamos lex.yy.c ao comando do gcc
 $(EXEC): kamenrider.tab.c lex.yy.c
-	$(CC) $(CFLAGS) kamenrider.tab.c lex.yy.c -o $(EXEC) $(LDFLAGS)
+	$(CC) kamenrider.tab.c lex.yy.c -o $(EXEC) $(CFLAGS)
+
+kamenrider.tab.c: kamenrider.y
+	$(BISON) -d kamenrider.y
+
+# Garante que o bison rode antes do flex para criar o .h
+lex.yy.c: kamenrider.l kamenrider.tab.c
+	$(FLEX) kamenrider.l
 
 run: $(EXEC)
-	./$(EXEC)
-
-test: $(EXEC)
 	./$(EXEC) $(TEST)
 
 clean:
 	rm -f lex.yy.c kamenrider.tab.c kamenrider.tab.h $(EXEC)
 
-.PHONY: all run test clean
+.PHONY: all run clean
